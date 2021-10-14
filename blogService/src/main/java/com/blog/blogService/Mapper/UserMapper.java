@@ -10,10 +10,12 @@ import java.util.Map;
 
 @Component
 public class UserMapper extends ConfigurableMapper {
+	
+	
 
     protected void configure(MapperFactory factory) {
         factory.classMap(User.class, UserDto.class)
-                .field("name", "surname")
+                .field("username", "userName")
                 .byDefault()
                 .register();
 

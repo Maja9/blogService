@@ -13,7 +13,7 @@ import static javax.persistence.GenerationType.AUTO;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -24,16 +24,16 @@ public class User {
     @NotNull
     private String email;
 
-    @Column
-    @NotNull
-    private String passHash;
+//    @Column
+//    @NotNull
+//    private String passHash;
 
-    @Column
-    @NotNull
-    private String name;
-
-    @Column
-    @NotNull
-    private String surName;
+//    @Column
+//    @NotNull
+//    private String name;
+//
+//    @Column
+//    @NotNull
+//    private String surName;
 
 }

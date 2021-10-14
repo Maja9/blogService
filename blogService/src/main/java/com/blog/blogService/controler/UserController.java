@@ -22,4 +22,12 @@ public class UserController {
         return userRepository.save(userToSave)
                 .getId();
     }
+
+    @PostMapping("/login")
+    public UserDto loginUser(@RequestBody UserDto userDto) {
+       // nie wiem jak zaimplementować tą metodę i jaki ma mieć typ zwracany
+    	return null;
+    }
+
+
 }
