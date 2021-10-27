@@ -1,4 +1,4 @@
-package com.blog.blogService;
+package blogService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

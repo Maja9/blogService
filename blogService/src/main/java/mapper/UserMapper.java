@@ -1,10 +1,11 @@
-package com.blog.blogService.Mapper;
+package mapper;
 
-import com.blog.blogService.dto.UserDto;
-import com.blog.blogService.entity.User;
+import entity.User;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.ConfigurableMapper;
 import org.springframework.stereotype.Component;
+
+import dto.UserDto;
 
 import java.util.Map;
 

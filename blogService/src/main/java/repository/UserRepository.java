@@ -1,10 +1,12 @@
-package com.blog.blogService.repository;
+package repository;
 
 
-import com.blog.blogService.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import entity.User;
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+	
 }

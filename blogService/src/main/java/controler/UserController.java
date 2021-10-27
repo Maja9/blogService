@@ -1,13 +1,15 @@
-package com.blog.blogService.controler;
+package controler;
 
-import com.blog.blogService.Mapper.UserMapper;
-import com.blog.blogService.dto.UserDto;
-import com.blog.blogService.entity.User;
-import com.blog.blogService.repository.UserRepository;
+import entity.User;
 import lombok.AllArgsConstructor;
+import mapper.UserMapper;
+import repository.UserRepository;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import dto.UserDto;
 
 @AllArgsConstructor
 @RestController
@@ -23,11 +25,11 @@ public class UserController {
                 .getId();
     }
 
-    @PostMapping("/login")
+ /*   @PostMapping("/login")
     public UserDto loginUser(@RequestBody UserDto userDto) {
        // nie wiem jak zaimplementować tą metodę i jaki ma mieć typ zwracany
     	return null;
-    }
+    } */
 
 
 }
