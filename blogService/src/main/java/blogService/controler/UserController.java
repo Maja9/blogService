@@ -29,8 +29,14 @@ public class UserController {
         return userService.getUser(userId);
     }
 
-
-
-
+    @PutMapping("/users/{id}")
+    public UserDto editUser(@RequestBody @Validated (UserDto.UpdateUser.class) UserDto userDto,
+                            @PathVariable("id") Long userId) {
+        if (userId.equals(userDto.getId())) {
+            userService.createUser(userDto);
+            return userService.getUser(userId);
+        }
+        return null;
+    }
 
 }
