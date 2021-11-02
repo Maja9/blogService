@@ -44,7 +44,7 @@ public class UserController {
     @DeleteMapping("/users/{id}")
     public void deleteUser(@RequestBody @Validated(UserDto.DeleteUser.class) UserDto userDto,
                            @PathVariable("id") Long userId) {
-        userService.deleteUser(userDto.getId(),userDto.getPassword());
+        userService.deleteUser(userDto.getId(), userDto.getPassword());
     }
 
 }
