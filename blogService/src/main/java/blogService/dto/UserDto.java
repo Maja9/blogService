@@ -17,11 +17,16 @@ public class UserDto {
     @Email
     private String email;
     @Length(min = 6)
+    @NotNull(groups = DeleteUser.class)
     private String password;
     private String name;
     private String surName;
 
     public interface UpdateUser {
+
+    }
+
+    public interface DeleteUser{
 
     }
 }

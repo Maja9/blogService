@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import blogService.dto.UserDto;
 
+import javax.persistence.Access;
+import javax.persistence.Column;
 import javax.validation.Valid;
 
 @AllArgsConstructor
@@ -30,13 +32,19 @@ public class UserController {
     }
 
     @PutMapping("/users/{id}")
-    public UserDto editUser(@RequestBody @Validated (UserDto.UpdateUser.class) UserDto userDto,
+    public UserDto editUser(@RequestBody @Validated(UserDto.UpdateUser.class) UserDto userDto,
                             @PathVariable("id") Long userId) {
         if (userId.equals(userDto.getId())) {
             userService.createUser(userDto);
             return userService.getUser(userId);
         }
         return null;
+    }
+
+    @DeleteMapping("/users/{id}")
+    public void deleteUser(@RequestBody @Validated(UserDto.DeleteUser.class) UserDto userDto,
+                           @PathVariable("id") Long userId) {
+        userService.deleteUser(userDto.getId(), userDto.getPassword());
     }
 
 }
