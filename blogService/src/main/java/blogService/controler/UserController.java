@@ -1,19 +1,10 @@
 package blogService.controler;
 
-import blogService.entity.User;
+import blogService.dto.UserDto;
 import blogService.service.UserService;
 import lombok.AllArgsConstructor;
-import blogService.mapper.UserMapper;
-import blogService.repository.UserRepository;
-
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import blogService.dto.UserDto;
-
-import javax.persistence.Access;
-import javax.persistence.Column;
-import javax.validation.Valid;
 
 @AllArgsConstructor
 @RestController
@@ -46,5 +37,11 @@ public class UserController {
                            @PathVariable("id") Long userId) {
         userService.deleteUser(userDto.getId(), userDto.getPassword());
     }
+
+    @PostMapping("users/password")
+    public void sendNewPassword(@RequestBody @Validated(UserDto.SendNewPassword.class) UserDto userDto) {
+        userService.resetPassword(userDto.getEmail());
+    }
+
 
 }

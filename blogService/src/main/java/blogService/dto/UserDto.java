@@ -15,6 +15,7 @@ public class UserDto {
     @LoginIsAvailable
     private String userName;
     @Email
+    @NotNull(groups = SendNewPassword.class)
     private String email;
     @Length(min = 6)
     @NotNull(groups = DeleteUser.class)
@@ -27,6 +28,10 @@ public class UserDto {
     }
 
     public interface DeleteUser{
+
+    }
+
+    public interface SendNewPassword{
 
     }
 }
