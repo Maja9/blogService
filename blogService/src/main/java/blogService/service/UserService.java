@@ -92,11 +92,11 @@ public class UserService {
 
         final Message message = new MimeMessage(setSession());
         try {
-            message.setFrom(new InternetAddress("majadomin@gmail.com")); // adres nadawcy - na początek możesz podać go tutaj, w celu testów ale zależy mi abyć użyła @Value i pobrała wartość z pliku konfiguracyjnego
+            message.setFrom(new InternetAddress(mailAddress));
             message.setRecipients(
                     Message.RecipientType.TO, InternetAddress.parse(email));
             message.setSubject("Twoje nowe hasło do konta");
-            String msg = "Twoje haslo do konta zosalo zresetowane. Nowe haslo to: " + newPass;
+            String msg = "Twoje hasło do konta zostało zresetowane. Nowe hasło to: " + newPass;
             MimeBodyPart mimeBodyPart = new MimeBodyPart();
             mimeBodyPart.setContent(msg, "text/html");
 
@@ -115,6 +115,11 @@ public class UserService {
 
     private Properties setProperties() {
         Properties prop = new Properties();
+        prop.put("mail.smtp.auth", mailSmtpAuth);
+        prop.put("mail.smtp.starttls.enable", mailSmtpStarttlsEnable);
+        prop.put("mail.smtp.host", mailSmtpHost);
+        prop.put("mail.smtp.port", mailSmtpPort);
+        prop.put("mail.smtp.ssl.trust", mailSmtpSslTrust);
         return prop;
     }
 
@@ -122,7 +127,7 @@ public class UserService {
         return Session.getInstance(setProperties(), new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("maja-domin@wp.pl", "adminadmin"); // te dane rwniez mają zostać wsktrzyknięte za pomocą @Value, najprawdopodobniej podasz tutaj dane swojego email - będziesz nadawcą i odbiorcą :)
+                return new PasswordAuthentication(mailAddress, mailPassword);
             }
         });
     }
