@@ -45,7 +45,8 @@ public class UserService {
     private String mailPassword;
 
 
-    public UserService(UserRepository userRepository, UserMapper userMapper) {
+    public UserService(final UserRepository userRepository,
+                       final UserMapper userMapper) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
 
@@ -71,24 +72,24 @@ public class UserService {
     }
 
     public String deleteUser(Long userId, String password) {
-        Optional<User> optional = userRepository.findById(userId);
-        if (optional.isPresent() && password.hashCode() == userRepository.findById(userId).get().getPassHash()) {
+        Optional<User> userOptional = userRepository.findById(userId);
+        if (userOptional.isPresent() && password.hashCode() == userOptional.get().getPassHash()) {
             userRepository.deleteById(userId);
             return "The user has been deleted.";
         }
         return "The user has not been deleted.";
     }
 
-    public void resetPassword(final String email) {
+    public String resetPassword(final String email) {
         final User user = userRepository.findByEmail(email).orElseThrow(IllegalArgumentException::new);
         final String temporaryPassword = RandomStringUtils.randomAlphanumeric(6);
         user.setPassHash(temporaryPassword.hashCode());
         userRepository.save(user);
 
-        sendMessage(temporaryPassword, email);
+        return sendMessage(temporaryPassword, email);
     }
 
-    private void sendMessage(final String newPass, final String email) {
+    private String sendMessage(final String newPass, final String email) {
 
         final Message message = new MimeMessage(setSession());
         try {
@@ -96,7 +97,7 @@ public class UserService {
             message.setRecipients(
                     Message.RecipientType.TO, InternetAddress.parse(email));
             message.setSubject("Twoje nowe hasło do konta");
-            String msg = "Twoje hasło do konta zostało zresetowane. Nowe hasło to: " + newPass;
+            String msg = "Twoje haslo do konta zostalo zresetowane. Nowe haslo to: " + newPass;
             MimeBodyPart mimeBodyPart = new MimeBodyPart();
             mimeBodyPart.setContent(msg, "text/html");
 
@@ -104,11 +105,12 @@ public class UserService {
             multipart.addBodyPart(mimeBodyPart);
 
             message.setContent(multipart);
-
             Transport.send(message);
+            return "Wiadomość e-mail została wysłana";
 
         } catch (MessagingException e) {
             e.printStackTrace();
+            return "Nie udało się wysłać wiadomości e-mail.";
         }
 
     }
