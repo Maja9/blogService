@@ -1,5 +1,6 @@
 package blogService.controler;
 
+import blogService.dto.BlogDto;
 import blogService.dto.UserDto;
 import blogService.service.UserService;
 import lombok.AllArgsConstructor;
@@ -42,6 +43,5 @@ public class UserController {
     public void sendNewPassword(@RequestBody @Validated(UserDto.SendNewPassword.class) UserDto userDto) {
         userService.resetPassword(userDto.getEmail());
     }
-
 
 }
