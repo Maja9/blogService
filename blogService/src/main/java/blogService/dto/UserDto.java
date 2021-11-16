@@ -1,6 +1,6 @@
 package blogService.dto;
 
-import blogService.controler.LoginIsAvailable;
+import blogService.validations.LoginIsAvailable;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.Email;

@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Table
+@Table(name = "userTable")
 @Entity
 @Data
 public class User {
@@ -36,7 +36,7 @@ public class User {
     @NotNull
     private String surName;
 
-    @OneToMany(mappedBy = "author" )
+    @OneToMany(mappedBy = "author")
     private Set<Blog> blogs = new HashSet<>();
 
 }
