@@ -1,4 +1,6 @@
-package blogService.controler;
+package blogService.validations;
+
+import blogService.validations.LoginIsAvailableValidator;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

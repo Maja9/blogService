@@ -1,4 +1,4 @@
-package blogService.controler;
+package blogService.validations;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
