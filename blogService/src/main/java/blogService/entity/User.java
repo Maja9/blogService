@@ -4,6 +4,8 @@ import com.sun.istack.NotNull;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Table
 @Entity
@@ -33,5 +35,8 @@ public class User {
     @Column
     @NotNull
     private String surName;
+
+    @OneToMany(mappedBy = "author" )
+    private Set<Blog> blogs = new HashSet<>();
 
 }
