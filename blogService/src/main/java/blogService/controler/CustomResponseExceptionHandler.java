@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class CustomResponseExceptionHandler {
 
     @ExceptionHandler
-    public ResponseEntity handle(ConstraintViolationException exception){
+    public ResponseEntity handle(final ConstraintViolationException exception){
         String errorMessage = new ArrayList<>(exception.getConstraintViolations()).get(0).getMessage();
         return new ResponseEntity<Object>(errorMessage, null, HttpStatus.BAD_REQUEST);
     }

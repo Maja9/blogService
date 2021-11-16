@@ -14,18 +14,18 @@ public class UserController {
 
 
     @PostMapping("/users")
-    public Long createUser(@RequestBody @Validated UserDto userDto) {
+    public Long createUser(@RequestBody @Validated final UserDto userDto) {
         return userService.createUser(userDto);
     }
 
     @GetMapping("/users/{id}")
-    public UserDto getUser(@PathVariable("id") Long userId) {
+    public UserDto getUser(@PathVariable("id") final Long userId) {
         return userService.getUser(userId);
     }
 
     @PutMapping("/users/{id}")
-    public UserDto editUser(@RequestBody @Validated(UserDto.UpdateUser.class) UserDto userDto,
-                            @PathVariable("id") Long userId) {
+    public UserDto editUser(@RequestBody @Validated(UserDto.UpdateUser.class) final UserDto userDto,
+                            @PathVariable("id") final Long userId) {
         if (userId.equals(userDto.getId())) {
             userService.createUser(userDto);
             return userService.getUser(userId);
@@ -34,13 +34,13 @@ public class UserController {
     }
 
     @DeleteMapping("/users/{id}")
-    public void deleteUser(@RequestBody @Validated(UserDto.DeleteUser.class) UserDto userDto,
+    public void deleteUser(@RequestBody @Validated(UserDto.DeleteUser.class) final UserDto userDto,
                            @PathVariable("id") Long userId) {
         userService.deleteUser(userDto.getId(), userDto.getPassword());
     }
 
     @PostMapping("users/password")
-    public void sendNewPassword(@RequestBody @Validated(UserDto.SendNewPassword.class) UserDto userDto) {
+    public void sendNewPassword(@RequestBody @Validated(UserDto.SendNewPassword.class) final UserDto userDto) {
         userService.resetPassword(userDto.getEmail());
     }
 

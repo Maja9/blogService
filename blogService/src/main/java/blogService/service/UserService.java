@@ -52,7 +52,7 @@ public class UserService {
 
     }
 
-    public Long createUser(UserDto userDto) {
+    public Long createUser(final UserDto userDto) {
         User userToSave = userMapper.map(userDto, User.class);
         if (userDto.getPassword() != null) {
             userToSave.setPassHash(userDto.getPassword().hashCode());
@@ -62,7 +62,7 @@ public class UserService {
 
     }
 
-    public UserDto getUser(Long userId) {
+    public UserDto getUser(final Long userId) {
         Optional<User> optional = userRepository.findById(userId);
         if (optional.isPresent()) {
             UserDto user = userMapper.map(optional.get(), UserDto.class);
@@ -71,7 +71,7 @@ public class UserService {
         return null;
     }
 
-    public String deleteUser(Long userId, String password) {
+    public String deleteUser(final Long userId, final String password) {
         Optional<User> userOptional = userRepository.findById(userId);
         if (userOptional.isPresent() && password.hashCode() == userOptional.get().getPassHash()) {
             userRepository.deleteById(userId);

@@ -14,7 +14,7 @@ public class BlogController {
     private final BlogService blogService;
 
     @PostMapping("/blogs")
-    public Long createBlog(@RequestBody @Validated BlogDto blogDto){
+    public Long createBlog(@RequestBody @Validated final BlogDto blogDto){
         return blogService.createBlog(blogDto);
 
     }

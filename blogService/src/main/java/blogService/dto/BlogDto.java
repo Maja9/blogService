@@ -17,7 +17,7 @@ public class BlogDto {
 
     private Date createdDate;
 
-    private Date modifiedDate; // nie było na Jirze, ale rozumiem że powinno być
+    private Date modifiedDate;
 
     private boolean isPrivate;
 

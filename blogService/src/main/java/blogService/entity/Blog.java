@@ -16,7 +16,7 @@ public class Blog {
 
     @Column
     @NotNull
-    private String blogname; // czy dodawac walidacje nazwy bloga?
+    private String blogName;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)

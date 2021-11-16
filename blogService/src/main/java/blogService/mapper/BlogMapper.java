@@ -10,9 +10,8 @@ import org.springframework.stereotype.Component;
 public class BlogMapper extends ConfigurableMapper {
 
 
-    protected void configure(MapperFactory factory) {
+    protected void configure(final MapperFactory factory) {
         factory.classMap(Blog.class, BlogDto.class)
-                .field("blogname", "blogName")
                 .byDefault()
                 .register();
 

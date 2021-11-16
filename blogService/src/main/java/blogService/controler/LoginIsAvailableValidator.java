@@ -10,16 +10,16 @@ public class LoginIsAvailableValidator implements ConstraintValidator<LoginIsAva
 	private UserRepository userRepository;
 	
 	
-	public LoginIsAvailableValidator (UserRepository userRepository) {
+	public LoginIsAvailableValidator (final UserRepository userRepository) {
 		this.userRepository = userRepository;
 	}
 	
 	@Override
-	public void initialize(LoginIsAvailable loginIsAvailable) {
+	public void initialize(final LoginIsAvailable loginIsAvailable) {
 	}
 
 	@Override
-	public boolean isValid(String username, ConstraintValidatorContext context) {
+	public boolean isValid(final String username,final ConstraintValidatorContext context) {
 		return !(userRepository.findUserByUsername(username).isPresent());
 		}
 	}

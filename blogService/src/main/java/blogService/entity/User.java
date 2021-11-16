@@ -37,6 +37,6 @@ public class User {
     private String surName;
 
     @OneToMany(mappedBy = "author" )
-    private Set <Blog> blogs = new HashSet<>();
+    private Set<Blog> blogs = new HashSet<>();
 
 }
