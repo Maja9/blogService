@@ -7,7 +7,7 @@ import blogService.repository.UserRepository;
 
 public class LoginIsAvailableValidator implements ConstraintValidator<LoginIsAvailable, String> {
 
-	private UserRepository userRepository;
+	private final UserRepository userRepository;
 	
 	
 	public LoginIsAvailableValidator (final UserRepository userRepository) {
@@ -20,6 +20,6 @@ public class LoginIsAvailableValidator implements ConstraintValidator<LoginIsAva
 
 	@Override
 	public boolean isValid(final String username,final ConstraintValidatorContext context) {
-		return !(userRepository.findUserByUsername(username).isPresent());
+		return userRepository.findUserByUsername(username).isEmpty();
 		}
 	}
