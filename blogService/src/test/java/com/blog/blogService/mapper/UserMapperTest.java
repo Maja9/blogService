@@ -43,7 +43,7 @@ public class UserMapperTest {
 
         //then
         Assert.assertEquals(userDto.getId(), user.getId());
-        Assert.assertEquals(userDto.getUserName(), user.getName());
+        Assert.assertEquals(userDto.getUserName(), user.getUsername());
         Assert.assertEquals(userDto.getEmail(), user.getEmail());
         Assert.assertEquals(userDto.getName(), user.getName());
         Assert.assertEquals(userDto.getSurName(), user.getSurName());
