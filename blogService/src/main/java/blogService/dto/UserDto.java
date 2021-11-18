@@ -1,12 +1,17 @@
 package blogService.dto;
 
 import blogService.validations.LoginIsAvailable;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserDto {
 
     @NotNull(groups = UpdateUser.class)
@@ -32,11 +37,11 @@ public class UserDto {
 
     }
 
-    public interface DeleteUser{
+    public interface DeleteUser {
 
     }
 
-    public interface SendNewPassword{
+    public interface SendNewPassword {
 
     }
 }

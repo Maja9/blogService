@@ -1,7 +1,9 @@
 package blogService.entity;
 
 import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -10,6 +12,8 @@ import java.util.Set;
 @Table(name = "userTable")
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -39,4 +43,15 @@ public class User {
     @OneToMany(mappedBy = "author")
     private Set<Blog> blogs = new HashSet<>();
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", passHash=" + passHash +
+                ", name='" + name + '\'' +
+                ", surName='" + surName + '\'' +
+                '}';
+    }
 }

@@ -12,6 +12,7 @@ public class BlogMapper extends ConfigurableMapper {
 
     protected void configure(final MapperFactory factory) {
         factory.classMap(Blog.class, BlogDto.class)
+                .field("author.username", "author.userName")
                 .byDefault()
                 .register();
 
