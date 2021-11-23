@@ -1,17 +1,20 @@
 package blogService.dto;
 
-import com.sun.istack.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import javax.validation.constraints.NotNull;
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class BlogDto {
 
+    @NotNull(groups = UpdateBlog.class)
     private Long blogId;
 
     private String blogName;
@@ -23,7 +26,11 @@ public class BlogDto {
 
     private Date modifiedDate;
 
-    private boolean isPrivate;
+    private boolean privateBlog;
 
+
+    public interface UpdateBlog {
+
+    }
 
 }

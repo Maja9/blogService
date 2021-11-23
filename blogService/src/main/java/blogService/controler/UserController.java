@@ -24,7 +24,7 @@ public class UserController {
     }
 
     @PutMapping("/users/{id}")
-    public UserDto editUser(@RequestBody @Validated(UserDto.UpdateUser.class) final UserDto userDto,
+    public UserDto editUser(@RequestBody @Validated (UserDto.UpdateUser.class) final UserDto userDto,
                             @PathVariable("id") final Long userId) {
         if (userId.equals(userDto.getId())) {
             userService.createUser(userDto);
@@ -34,13 +34,13 @@ public class UserController {
     }
 
     @DeleteMapping("/users/{id}")
-    public void deleteUser(@RequestBody @Validated(UserDto.DeleteUser.class) final UserDto userDto,
+    public void deleteUser(@RequestBody @Validated (UserDto.DeleteUser.class) final UserDto userDto,
                            @PathVariable("id") Long userId) {
         userService.deleteUser(userDto.getId(), userDto.getPassword());
     }
 
     @PostMapping("users/password")
-    public void sendNewPassword(@RequestBody @Validated(UserDto.SendNewPassword.class) final UserDto userDto) {
+    public void sendNewPassword(@RequestBody @Validated (UserDto.SendNewPassword.class) final UserDto userDto) {
         userService.resetPassword(userDto.getEmail());
     }
 

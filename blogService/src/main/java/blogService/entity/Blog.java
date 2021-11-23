@@ -30,15 +30,15 @@ public class Blog {
     private User author;
 
     @CreationTimestamp
-    @Column
+    @Column(updatable = false)
     @NotNull
-    Date createdDate;
+    private Date createdDate;
 
     @UpdateTimestamp
     @Column
-    Date modifiedDate;
+    private Date modifiedDate;
 
     @Column
-    boolean isPrivat;
+    private boolean privateBlog;
 
 }

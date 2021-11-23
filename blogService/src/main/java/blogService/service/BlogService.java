@@ -27,4 +27,15 @@ public class BlogService {
         return blogOptional.map(blog -> blogMapper.map(blog, BlogDto.class))
                 .orElse(null);
     }
+
+    public BlogDto updateBlog(final Long blogId, final BlogDto blogDto, final Long userId) {
+
+        final BlogDto blogFromDb = getBlogById(blogId);
+        if (blogId.equals(blogFromDb.getBlogId()) && userId.equals(blogFromDb.getAuthor().getId())) {
+            createBlog(blogDto);
+            return getBlogById(blogId);
+        }
+        return null;
+    }
+
 }
