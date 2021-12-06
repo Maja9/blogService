@@ -1,7 +1,7 @@
 package com.blog.blogService.controler;
 
 import com.blog.blogService.dto.UserDto;
-import com.blog.blogService.service.impl.UserServiceImpl;
+import com.blog.blogService.service.spi.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class UserController {
 
-    private final UserServiceImpl userService;
+    private final UserService userService;
 
 
     @PostMapping("/users")
