@@ -1,6 +1,4 @@
-package blogService.validations;
-
-import blogService.validations.LoginIsAvailableValidator;
+package com.blog.blogService.validations;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

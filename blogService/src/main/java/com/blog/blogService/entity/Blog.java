@@ -1,4 +1,4 @@
-package blogService.entity;
+package com.blog.blogService.entity;
 
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;

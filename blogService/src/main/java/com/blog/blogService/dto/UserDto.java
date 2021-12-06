@@ -1,6 +1,6 @@
-package blogService.dto;
+package com.blog.blogService.dto;
 
-import blogService.validations.LoginIsAvailable;
+import com.blog.blogService.validations.LoginIsAvailable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

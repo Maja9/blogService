@@ -1,7 +1,7 @@
-package blogService.mapper;
+package com.blog.blogService.mapper;
 
-import blogService.dto.BlogDto;
-import blogService.entity.Blog;
+import com.blog.blogService.dto.BlogDto;
+import com.blog.blogService.entity.Blog;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.ConfigurableMapper;
 import org.springframework.stereotype.Component;

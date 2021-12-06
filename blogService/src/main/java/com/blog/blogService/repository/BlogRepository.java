@@ -1,6 +1,6 @@
-package blogService.repository;
+package com.blog.blogService.repository;
 
-import blogService.entity.Blog;
+import com.blog.blogService.entity.Blog;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

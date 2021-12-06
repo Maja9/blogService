@@ -1,7 +1,7 @@
-package blogService.mapper;
+package com.blog.blogService.mapper;
 
-import blogService.dto.UserDto;
-import blogService.entity.User;
+import com.blog.blogService.dto.UserDto;
+import com.blog.blogService.entity.User;
 
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.ConfigurableMapper;

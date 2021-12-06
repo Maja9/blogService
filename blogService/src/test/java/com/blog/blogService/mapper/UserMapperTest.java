@@ -1,15 +1,16 @@
 package com.blog.blogService.mapper;
 
-import blogService.dto.UserDto;
-import blogService.entity.Blog;
-import blogService.entity.User;
-import blogService.mapper.UserMapper;
+import com.blog.blogService.dto.UserDto;
+import com.blog.blogService.entity.Blog;
+import com.blog.blogService.entity.User;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.HashSet;
 
 public class UserMapperTest {
+
+
 
     @Test
     public void shouldMapUserToUserDto() {
