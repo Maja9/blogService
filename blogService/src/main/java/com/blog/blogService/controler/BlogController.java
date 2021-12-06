@@ -1,7 +1,7 @@
-package blogService.controler;
+package com.blog.blogService.controler;
 
-import blogService.dto.BlogDto;
-import blogService.service.BlogService;
+import com.blog.blogService.dto.BlogDto;
+import com.blog.blogService.service.spi.BlogService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 @RestController
 public class BlogController {
+
     private final BlogService blogService;
 
     @PostMapping("/blogs")

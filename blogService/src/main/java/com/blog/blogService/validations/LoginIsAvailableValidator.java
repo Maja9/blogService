@@ -1,9 +1,9 @@
-package blogService.validations;
+package com.blog.blogService.validations;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import blogService.repository.UserRepository;
+import com.blog.blogService.repository.UserRepository;
 
 public class LoginIsAvailableValidator implements ConstraintValidator<LoginIsAvailable, String> {
 

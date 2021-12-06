@@ -1,4 +1,4 @@
-package blogService.controler;
+package com.blog.blogService.controler;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

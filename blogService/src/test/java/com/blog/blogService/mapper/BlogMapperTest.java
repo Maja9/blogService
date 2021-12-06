@@ -1,10 +1,9 @@
 package com.blog.blogService.mapper;
 
-import blogService.dto.BlogDto;
-import blogService.dto.UserDto;
-import blogService.entity.Blog;
-import blogService.entity.User;
-import blogService.mapper.BlogMapper;
+import com.blog.blogService.dto.BlogDto;
+import com.blog.blogService.dto.UserDto;
+import com.blog.blogService.entity.Blog;
+import com.blog.blogService.entity.User;
 import org.junit.Assert;
 import org.junit.Test;
 
