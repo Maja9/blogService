@@ -5,47 +5,43 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Table
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Blog {
+public class Article {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long blogId;
+    private Long articleId;
 
     @Column
     @NotNull
-    private String blogName;
+    private String title;
+
+    @Column
+    @NotNull
+    private String text;
+
+    @CreationTimestamp
+    @Column (updatable = false)
+    @NotNull
+    private Date createdDate;
+
+    @CreationTimestamp
+    @Column
+    private Date modifiedDate;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     private User author;
 
-    @OneToMany(mappedBy = "articleBlog")
-    private Set<Article> articles = new HashSet<>();
-
-    @CreationTimestamp
-    @Column(updatable = false)
     @NotNull
-    private Date createdDate;
-
-    @UpdateTimestamp
-    @Column
-    private Date modifiedDate;
-
-    @Column
-    private boolean privateBlog;
-
-    public Blog(long l, String nazwaBloga, User user, Date date, Date date1, boolean b) {
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Blog articleBlog;
 }
