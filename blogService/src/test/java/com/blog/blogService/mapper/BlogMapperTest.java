@@ -2,14 +2,12 @@ package com.blog.blogService.mapper;
 
 import com.blog.blogService.dto.BlogDto;
 import com.blog.blogService.dto.UserDto;
-import com.blog.blogService.entity.Article;
 import com.blog.blogService.entity.Blog;
 import com.blog.blogService.entity.User;
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.util.Date;
-import java.util.Set;
+
 
 public class BlogMapperTest {
 

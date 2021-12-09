@@ -24,8 +24,11 @@ public class ArticleServiceImpl implements ArticleService {
     public Long createArticle(final ArticleDto articleDto, final Long blogId) {
         Article articleToSave = articleMapper.map(articleDto, Article.class);
         Optional<Blog> optionalBlog = blogRepository.findById(blogId);
-        if (optionalBlog.get().isPrivateBlog() == false)
-            optionalBlog.ifPresent(articleToSave::setArticleBlog);
+       optionalBlog.ifPresent(blog -> {
+           if (!blog.isPrivateBlog()) {
+               articleToSave.setArticleBlog(blog);
+           }
+       });
         return articleRepository.save(articleToSave)
                 .getArticleId();
     }

@@ -46,7 +46,14 @@ public class User {
     @OneToMany(mappedBy = "author")
     private Set<Article> articles = new HashSet<>();
 
-    public User(long l, String username, String email, int i, String name, String surname, HashSet<Blog> blogs) {
+    public User(Long id, String username, String email, int passHash, String name, String surName, Set<Blog> blogs) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.passHash = passHash;
+        this.name = name;
+        this.surName = surName;
+        this.blogs = blogs;
     }
 
     @Override
