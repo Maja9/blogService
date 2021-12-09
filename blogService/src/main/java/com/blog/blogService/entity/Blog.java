@@ -31,6 +31,9 @@ public class Blog {
     @ManyToOne(fetch = FetchType.LAZY)
     private User author;
 
+    @OneToMany(mappedBy = "articleBlog")
+    private Set<Article> articles = new HashSet<>();
+
     @CreationTimestamp
     @Column(updatable = false)
     @NotNull
@@ -43,4 +46,12 @@ public class Blog {
     @Column
     private boolean privateBlog;
 
+    public Blog(Long blogId, String blogName, User author, Date createdDate, Date modifiedDate, boolean privateBlog) {
+        this.blogId = blogId;
+        this.blogName = blogName;
+        this.author = author;
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
+        this.privateBlog = privateBlog;
+    }
 }

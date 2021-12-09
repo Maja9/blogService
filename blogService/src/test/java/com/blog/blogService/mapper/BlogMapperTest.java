@@ -6,8 +6,8 @@ import com.blog.blogService.entity.Blog;
 import com.blog.blogService.entity.User;
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.util.Date;
+
 
 public class BlogMapperTest {
 
