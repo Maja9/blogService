@@ -30,11 +30,10 @@ public class ArticleServiceImplTest {
     @Mock
     private ArticleRepository articleRepository;
 
-
-    private ArticleServiceImpl articleService;
-
     @Mock
     private BlogRepository blogRepository;
+
+    private ArticleServiceImpl articleService;
 
     @Before
     public void before() {

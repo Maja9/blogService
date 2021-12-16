@@ -4,7 +4,7 @@ import com.blog.blogservice.dto.UserDto;
 
 public final class UserDtoMock {
 
-    public UserDtoMock() {
+    private UserDtoMock() {
     }
 
     public static UserDto getBasicUserDto() {

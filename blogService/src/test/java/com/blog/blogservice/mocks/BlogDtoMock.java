@@ -6,7 +6,7 @@ import java.util.Date;
 
 public final class BlogDtoMock {
 
-    public BlogDtoMock() {
+    private BlogDtoMock() {
     }
 
     public static BlogDto getBasicPrivateBlogDto() {

@@ -6,7 +6,7 @@ import java.util.Date;
 
 public final class ArticleMock {
 
-    public ArticleMock() {
+    private ArticleMock() {
     }
 
     public static Article getBasicArticleInPrivateBlog() {

@@ -6,7 +6,7 @@ import java.util.HashSet;
 
 public final class UserMock {
 
-    public UserMock() {
+    private UserMock() {
     }
 
     public static User getBasicUser() {
