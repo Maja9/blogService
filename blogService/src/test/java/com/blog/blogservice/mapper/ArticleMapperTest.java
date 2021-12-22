@@ -5,11 +5,13 @@ import com.blog.blogservice.dto.BlogDto;
 import com.blog.blogservice.dto.UserDto;
 import com.blog.blogservice.entity.Article;
 import com.blog.blogservice.entity.Blog;
+import com.blog.blogservice.entity.Comment;
 import com.blog.blogservice.entity.User;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
+import java.util.HashSet;
 
 class ArticleMapperTest {
 
