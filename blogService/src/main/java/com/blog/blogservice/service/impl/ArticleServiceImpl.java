@@ -3,14 +3,17 @@ package com.blog.blogservice.service.impl;
 import com.blog.blogservice.dto.ArticleDto;
 import com.blog.blogservice.entity.Article;
 import com.blog.blogservice.entity.Blog;
+import com.blog.blogservice.entity.Comment;
 import com.blog.blogservice.mapper.ArticleMapper;
 import com.blog.blogservice.repository.ArticleRepository;
 import com.blog.blogservice.repository.BlogRepository;
+import com.blog.blogservice.repository.CommentRepository;
 import com.blog.blogservice.service.spi.ArticleService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Set;
 
 @AllArgsConstructor
 @Service
@@ -43,6 +46,9 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public ArticleDto getArticleById(final Long articleId) {
         Optional<Article> articleOptional = articleRepository.findById(articleId);
+        //poniżej dodałam Optionala dla commentarzy
+        Optional<Set<Comment>> commentsSetOptional = Optional.ofNullable(articleRepository.findById(articleId).get().getComments());
+
         return articleOptional.map(article -> articleMapper.map(article, ArticleDto.class))
                 .orElse(null);
     }

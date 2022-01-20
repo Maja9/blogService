@@ -2,6 +2,7 @@ package com.blog.blogservice.mapper;
 
 import com.blog.blogservice.dto.ArticleDto;
 import com.blog.blogservice.dto.BlogDto;
+import com.blog.blogservice.dto.CommentDto;
 import com.blog.blogservice.dto.UserDto;
 import com.blog.blogservice.entity.Article;
 import com.blog.blogservice.entity.Blog;
@@ -10,8 +11,7 @@ import com.blog.blogservice.entity.User;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import java.util.Date;
-import java.util.HashSet;
+import java.util.*;
 
 class ArticleMapperTest {
 
@@ -37,7 +37,73 @@ class ArticleMapperTest {
     void shouldMapArticleDToToArticle() {
 
         //given
-        ArticleDto articleDto = new ArticleDto(1L, "Title", "text", new Date(), new Date(), new UserDto(), new BlogDto());
+        ArticleDto articleDto = new ArticleDto(1L, "Title", "text", new Date(), new Date(),
+                new UserDto(), new BlogDto(), new Set <CommentDto>() {
+            @Override
+            public int size() {
+                return 0;
+            }
+
+            @Override
+            public boolean isEmpty() {
+                return false;
+            }
+
+            @Override
+            public boolean contains(Object o) {
+                return false;
+            }
+
+            @Override
+            public Iterator<CommentDto> iterator() {
+                return null;
+            }
+
+            @Override
+            public Object[] toArray() {
+                return new Object[0];
+            }
+
+            @Override
+            public <T> T[] toArray(T[] a) {
+                return null;
+            }
+
+            @Override
+            public boolean add(CommentDto commentDto) {
+                return false;
+            }
+
+            @Override
+            public boolean remove(Object o) {
+                return false;
+            }
+
+            @Override
+            public boolean containsAll(Collection<?> c) {
+                return false;
+            }
+
+            @Override
+            public boolean addAll(Collection<? extends CommentDto> c) {
+                return false;
+            }
+
+            @Override
+            public boolean retainAll(Collection<?> c) {
+                return false;
+            }
+
+            @Override
+            public boolean removeAll(Collection<?> c) {
+                return false;
+            }
+
+            @Override
+            public void clear() {
+
+            }
+        });
         ArticleMapper articleMapper = new ArticleMapper();
 
         //when
