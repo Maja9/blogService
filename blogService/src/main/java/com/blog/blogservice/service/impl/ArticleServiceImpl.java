@@ -1,16 +1,20 @@
 package com.blog.blogservice.service.impl;
 
 import com.blog.blogservice.dto.ArticleDto;
+import com.blog.blogservice.dto.CommentDto;
 import com.blog.blogservice.entity.Article;
 import com.blog.blogservice.entity.Blog;
 import com.blog.blogservice.mapper.ArticleMapper;
+import com.blog.blogservice.mapper.CommentMapper;
 import com.blog.blogservice.repository.ArticleRepository;
 import com.blog.blogservice.repository.BlogRepository;
 import com.blog.blogservice.service.spi.ArticleService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
@@ -19,6 +23,7 @@ public class ArticleServiceImpl implements ArticleService {
     private final ArticleRepository articleRepository;
     private final ArticleMapper articleMapper;
     private final BlogRepository blogRepository;
+    private final CommentMapper commentMapper;
 
     @Override
     public Long createArticle(final ArticleDto articleDto, final Long blogId) {
@@ -43,8 +48,16 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public ArticleDto getArticleById(final Long articleId) {
         Optional<Article> articleOptional = articleRepository.findById(articleId);
-        return articleOptional.map(article -> articleMapper.map(article, ArticleDto.class))
-                .orElse(null);
+        if (articleOptional.isPresent()) {
+            List<CommentDto> commentDtos = articleOptional.get().getComments().stream()
+                    .map(comment -> commentMapper.map(comment, CommentDto.class))
+                    .collect(Collectors.toList());
+            ArticleDto articleDto = articleMapper.map(articleOptional.get(), ArticleDto.class);
+            articleDto.setCommentsDto(commentDtos);
+            return articleDto;
+        }
+        return null;
+
     }
 
     @Override

@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
+
 
 @Data
 @AllArgsConstructor
@@ -28,6 +30,8 @@ public class ArticleDto {
     private UserDto author;
 
     private BlogDto articleBlog;
+
+    private List<CommentDto> commentsDto;
 
     public interface UpdateArticle {
 

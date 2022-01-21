@@ -1,7 +1,6 @@
 package com.blog.blogservice.entity;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -10,13 +9,11 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Table
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class Article {
 
@@ -50,9 +47,9 @@ public class Article {
     private Blog articleBlog;
 
     @OneToMany(mappedBy = "commentArticle")
-    private Set<Comment> comments = new HashSet<>();
+    private List<Comment> comments;
 
-    public Article(Long articleId, String title, String text, Date createdDate, Date modifiedDate, User author, Blog articleBlog) {
+    public Article(Long articleId, String title, String text, Date createdDate, Date modifiedDate, User author, Blog articleBlog, List<Comment> comments) {
         this.articleId = articleId;
         this.title = title;
         this.text = text;
@@ -60,6 +57,7 @@ public class Article {
         this.modifiedDate = modifiedDate;
         this.author = author;
         this.articleBlog = articleBlog;
+        this.comments = comments;
     }
 
     @Override
@@ -72,6 +70,7 @@ public class Article {
                 ", modifiedDate=" + modifiedDate +
                 ", author=" + author +
                 ", articleBlog=" + articleBlog +
+                ", comments=" + comments +
                 '}';
     }
 }

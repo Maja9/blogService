@@ -26,7 +26,7 @@ public class Comment {
 
     @CreationTimestamp
     @Column(updatable = false)
-    @NotNull
+    //@NotNull
     private Date createdDate;
 
     @NotNull

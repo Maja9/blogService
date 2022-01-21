@@ -5,13 +5,12 @@ import com.blog.blogservice.dto.BlogDto;
 import com.blog.blogservice.dto.UserDto;
 import com.blog.blogservice.entity.Article;
 import com.blog.blogservice.entity.Blog;
-import com.blog.blogservice.entity.Comment;
 import com.blog.blogservice.entity.User;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 
 class ArticleMapperTest {
 
@@ -19,7 +18,7 @@ class ArticleMapperTest {
     void shouldMapArticleToArticleDto() {
 
         //given
-        Article article = new Article(1L, "Title", "text", new Date(), new Date(), new User(), new Blog());
+        Article article = new Article(1L, "Title", "text", new Date(), new Date(), new User(), new Blog(), new ArrayList<>());
         ArticleMapper articleMapper = new ArticleMapper();
 
         //when
@@ -37,7 +36,9 @@ class ArticleMapperTest {
     void shouldMapArticleDToToArticle() {
 
         //given
-        ArticleDto articleDto = new ArticleDto(1L, "Title", "text", new Date(), new Date(), new UserDto(), new BlogDto());
+        ArticleDto articleDto = new ArticleDto(1L, "Title", "text", new Date(), new Date(),
+                new UserDto(), new BlogDto(), new ArrayList<>());
+
         ArticleMapper articleMapper = new ArticleMapper();
 
         //when
