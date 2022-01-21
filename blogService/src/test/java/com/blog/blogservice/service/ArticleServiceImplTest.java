@@ -5,6 +5,7 @@ import com.blog.blogservice.dto.BlogDto;
 import com.blog.blogservice.entity.Article;
 import com.blog.blogservice.entity.Blog;
 import com.blog.blogservice.mapper.ArticleMapper;
+import com.blog.blogservice.mapper.CommentMapper;
 import com.blog.blogservice.mocks.*;
 import com.blog.blogservice.repository.ArticleRepository;
 import com.blog.blogservice.repository.BlogRepository;
@@ -28,6 +29,9 @@ public class ArticleServiceImplTest {
     private ArticleMapper articleMapper;
 
     @Mock
+    private CommentMapper commentMapper;
+
+    @Mock
     private ArticleRepository articleRepository;
 
     @Mock
@@ -38,7 +42,7 @@ public class ArticleServiceImplTest {
     @Before
     public void before() {
         openMocks(this);
-        articleService = new ArticleServiceImpl(articleRepository, articleMapper, blogRepository);
+        articleService = new ArticleServiceImpl(articleRepository, articleMapper, blogRepository, commentMapper);
     }
 
     @After
