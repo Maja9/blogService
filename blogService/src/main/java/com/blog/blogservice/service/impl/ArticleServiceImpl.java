@@ -4,19 +4,16 @@ import com.blog.blogservice.dto.ArticleDto;
 import com.blog.blogservice.dto.CommentDto;
 import com.blog.blogservice.entity.Article;
 import com.blog.blogservice.entity.Blog;
-import com.blog.blogservice.entity.Comment;
 import com.blog.blogservice.mapper.ArticleMapper;
 import com.blog.blogservice.mapper.CommentMapper;
 import com.blog.blogservice.repository.ArticleRepository;
 import com.blog.blogservice.repository.BlogRepository;
-import com.blog.blogservice.repository.CommentRepository;
 import com.blog.blogservice.service.spi.ArticleService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -55,10 +52,12 @@ public class ArticleServiceImpl implements ArticleService {
             List<CommentDto> commentDtos = articleOptional.get().getComments().stream()
                     .map(comment -> commentMapper.map(comment, CommentDto.class))
                     .collect(Collectors.toList());
-            articleOptional.map(article -> articleMapper.map(article, ArticleDto.class));
-           // brakuje return rezultatu,ale utknęłam
+            ArticleDto articleDto = articleMapper.map(articleOptional.get(), ArticleDto.class);
+            articleDto.setCommentsDto(commentDtos);
+            return articleDto;
         }
         return null;
+
     }
 
     @Override
